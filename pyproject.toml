@@ -1,0 +1,90 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "portfolio-risk-lab"
+version = "0.2.0"
+description = "本地投资组合优化与风险研究平台"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["portfolio", "risk", "optimization", "backtest", "streamlit"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Education",
+  "Intended Audience :: Science/Research",
+  "Natural Language :: Chinese (Simplified)",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Office/Business :: Financial :: Investment",
+]
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "cvxpy>=1.6,<2",
+  "numpy>=2.0,<3",
+  "pandas>=2.2,<3",
+  "plotly>=6.0,<7",
+  "pydantic>=2.10,<3",
+  "scipy>=1.14,<2",
+  "streamlit>=1.42,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<9",
+  "ruff>=0.9,<1",
+]
+
+[project.urls]
+Repository = "https://github.com/Aisiweiyang/portfolio-risk-lab"
+Issues = "https://github.com/Aisiweiyang/portfolio-risk-lab/issues"
+Changelog = "https://github.com/Aisiweiyang/portfolio-risk-lab/blob/main/CHANGELOG.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/portfolio_risk_lab"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/.gitattributes",
+  "/.github/**/*.md",
+  "/.github/**/*.yml",
+  "/.gitignore",
+  "/.streamlit/config.toml",
+  "/AGENTS.md",
+  "/CHANGELOG.md",
+  "/CONTRIBUTING.md",
+  "/LICENSE",
+  "/README.md",
+  "/app.py",
+  "/docs/*.md",
+  "/pyproject.toml",
+  "/sample_data/README.md",
+  "/sample_data/sample_prices.csv",
+  "/scripts/*.py",
+  "/src/**/*.py",
+  "/tests/*.py",
+  "/uv.lock",
+  "/运行.cmd",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+cache_dir = ".cache/pytest"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [
+  ".cache",
+  ".python",
+  ".pytest_cache",
+  ".ruff_cache",
+  ".uv-cache",
+  ".venv",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

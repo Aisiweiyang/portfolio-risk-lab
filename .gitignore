@@ -1,0 +1,30 @@
+.venv/
+.python/
+.uv-cache/
+.pytest_cache/
+.ruff_cache/
+.cache/
+__pycache__/
+*.py[cod]
+.streamlit/secrets.toml
+
+# Local inputs, exported results and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+/data/
+/uploads/
+/exports/
+/results/
+*.log
+
+# Build outputs and editor files
+dist/
+build/
+*.egg-info/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
