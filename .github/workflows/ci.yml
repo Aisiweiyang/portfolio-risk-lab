@@ -19,6 +19,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         python: ["3.11", "3.12"]
     env:
+      PYTHONUTF8: "1"
       STREAMLIT_BROWSER_GATHER_USAGE_STATS: "false"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7

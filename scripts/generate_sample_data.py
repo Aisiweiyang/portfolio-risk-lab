@@ -44,19 +44,19 @@ def sample_csv() -> bytes:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--check", action="store_true", help="检查现有 CSV 与生成结果一致")
+    parser = argparse.ArgumentParser(description="Generate deterministic synthetic demo prices.")
+    parser.add_argument("--check", action="store_true", help="Check CSV matches generated data")
     args = parser.parse_args()
     expected = sample_csv()
     if args.check:
         if not SAMPLE_FILE.is_file() or SAMPLE_FILE.read_bytes() != expected:
-            print("合成数据不一致，请运行 python scripts/generate_sample_data.py 重建。")
+            print("Sample mismatch. Run python scripts/generate_sample_data.py to regenerate.")
             return 1
-        print("合成数据一致：261 个价格观测，3 个虚构资产。")
+        print("Synthetic sample verified: 261 price observations, 3 fictional assets.")
         return 0
     SAMPLE_FILE.parent.mkdir(parents=True, exist_ok=True)
     SAMPLE_FILE.write_bytes(expected)
-    print(f"已生成合成演示数据：{SAMPLE_FILE.name}")
+    print(f"Generated synthetic demo prices: {SAMPLE_FILE.name}")
     return 0
 
 

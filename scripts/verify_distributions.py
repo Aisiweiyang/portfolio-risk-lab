@@ -111,7 +111,9 @@ def main() -> None:
         wheel_files,
         "Wheel",
     )
-    print(f"分发包完整：{len(source_files)} 个源码包文件，{len(wheel_files)} 个 Wheel 文件。")
+    print(
+        f"Distributions verified: {len(source_files)} source files, {len(wheel_files)} wheel files."
+    )
 
 
 if __name__ == "__main__":
